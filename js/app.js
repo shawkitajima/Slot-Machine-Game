@@ -1,4 +1,6 @@
 /*----- constants -----*/
+
+const PLAY_COST = 3;
 const WINNING_SLOTS = [
     [0, 1, 2],
     [3, 4, 5],
@@ -6,6 +8,7 @@ const WINNING_SLOTS = [
     [0, 4, 8],
     [6, 4, 2]
 ];
+const player = new Audio();
 
 const IMAGES = [
     {
@@ -52,57 +55,49 @@ let coinCount = 10;
 
 /*----- cached element references -----*/
 
-    // Each of the "Stop" buttons. Let's go ahead and put it on the parent wrapper for the "Stop" buttons
-    // The "Start" Button
-    // The "PayPal" button
-    let stop1Button = document.getElementById('stop1');
-    let stop2Button = document.getElementById('stop2');
-    let stop3Button = document.getElementById('stop3');
-    let slot0 = document.getElementById('0');
-    let slot1 = document.getElementById('1');
-    let slot2 = document.getElementById('2');
-    let slot3 = document.getElementById('3');
-    let slot4 = document.getElementById('4');
-    let slot5 = document.getElementById('5');
-    let slot6 = document.getElementById('6');
-    let slot7 = document.getElementById('7');
-    let slot8 = document.getElementById('8');
-    let startButton = document.getElementById('start');
+let stop1Button = document.getElementById('stop1');
+let stop2Button = document.getElementById('stop2');
+let stop3Button = document.getElementById('stop3');
+let slot0 = document.getElementById('0');
+let slot1 = document.getElementById('1');
+let slot2 = document.getElementById('2');
+let slot3 = document.getElementById('3');
+let slot4 = document.getElementById('4');
+let slot5 = document.getElementById('5');
+let slot6 = document.getElementById('6');
+let slot7 = document.getElementById('7');
+let slot8 = document.getElementById('8');
+let startButton = document.getElementById('start');
 
 
 /*----- event listeners -----*/
 
-    // Clicking on the "Stop" buttons stops the random animation of slots, and assigns the values to "myArray". It also disables that "Stop" button.
-    // Clicking the "Start" button runs the init function
-    // Clicking the "PayPal" button sends money to Shaw Kitajima
-    stop1Button.addEventListener('click', function() {
-        stop1 = true;
-    });
-    stop2Button.addEventListener('click', function() {
-        stop2 = true;
-    });
-    stop3Button.addEventListener('click', function() {
-        stop3 = true;
-    });
-    startButton.addEventListener('click', function() {
-        init();
-    })
+stop1Button.addEventListener('click', function() {
+    player.pause();
+    playSound();
+    stop1 = true;
+});
+stop2Button.addEventListener('click', function() {
+    player.pause();
+    playSound();
+    stop2 = true;
+});
+stop3Button.addEventListener('click', function() {
+    player.pause();
+    playSound();
+    stop3 = true;
+});
+startButton.addEventListener('click', init)
 
 /*----- functions -----*/
 
-    // init => empties the "myArray" array, enables the "Stop" button event listener 
-    // render => This bad boy starts the random animation of slots, and runs the check-for-winner function
-    // check-for-winner => It loops through the "winning" array and checks if the indeces it has matches "myArray"
-    // update-coins => Passed if someone wins, then we are going to increase coins based on which combination won
-    // Randomize Images => Randomizes the animation of slots
-    // IF coin count === 0, disable the start button
-    // Play "What's new pussycat by Tom Jones"
 
 function init() {
     mySlots = [null, null, null, null, null, null, null, null, null];
     stop1 = false;
     stop2 = false;
     stop3 = false;
+    displayCoins();
     render();
 }
 
@@ -120,7 +115,7 @@ function render() {
     f();
     g();
     h();
-    coinCount -= 3;
+    coinCount -= PLAY_COST;
 }
 
 
@@ -201,13 +196,28 @@ function checkWinner() {
             mySlots[slot[0]] !== null
         ) {
         coinCount += mySlots[slot[0]] * 3;
-        console.log(coinCount);
+        displayCoins();
         return
         }
     })
-}
+};
 
+function displayCoins() {
+    if (coinCount < PLAY_COST) {
+        document.querySelector('#Bottom-Window > div:first-child').textContent = `You have run out of money`;
+        startButton.removeEventListener('click', init);
 
+    }
+    else {
+        document.querySelector('#Bottom-Window > div:first-child').textContent = `Your current coins are: ${coinCount}`;
+    }
+};
 
 
 init();
+
+function playSound() {
+    player.src = "audio/What's New Pussycat.mp3";
+    player.type = "audio/ogg";
+    player.play();
+  }
