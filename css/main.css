@@ -45,8 +45,18 @@ section {
     border: 1px solid black;
 }
 
-#bottom-window {
+#Bottom-Window {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Bottom-Window > * {
+    margin: 1rem 0rem;
+}
+
+#Bottom-Window > div {
+    font-size: 2rem;
 }
 
 #stop {
@@ -63,4 +73,10 @@ section {
     background-image: url('https://wallpaperplay.com/walls/full/2/b/6/11392.jpg#.Xbomjps-7os.link');
     background-position: center;
     background-size: cover;
+}
+
+button {
+    margin-top: 0.5rem;
+    width: 4rem;
+    height: 2rem;
 }

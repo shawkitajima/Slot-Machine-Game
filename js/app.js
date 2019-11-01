@@ -49,7 +49,7 @@ IMAGES1.push(IMAGES[1]);
 let mySlots, winningslots;
 let stop1, stop2, stop3;
 let slot0pos, slot1pos, slot2pos, slot3pos, slot4pos, slot5pos, slot6pos, slot7pos, slot8pos;
-let coinCount = 10;
+let coinCount = 13;
 
 
 
@@ -97,6 +97,10 @@ function init() {
     stop1 = false;
     stop2 = false;
     stop3 = false;
+    coinCount -= PLAY_COST;
+    if (coinCount >= PLAY_COST) {
+        startButton.addEventListener('click', init);
+    }
     displayCoins();
     render();
 }
@@ -115,7 +119,6 @@ function render() {
     f();
     g();
     h();
-    coinCount -= PLAY_COST;
 }
 
 
