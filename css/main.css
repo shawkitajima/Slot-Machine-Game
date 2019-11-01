@@ -1,0 +1,65 @@
+
+* {
+    box-sizing: border-box;
+    
+}
+
+h1 {
+    background-color: red;
+}
+
+body {
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;;
+}
+
+#the-game {
+    width: 500px;
+    height: 500px;
+    background-color:transparent;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.machine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+}
+
+.decorations {
+    margin: 2rem 0;
+}
+
+
+section {
+    border: 2px solid black;
+    width: 500px
+}
+
+.box {
+    border: 1px solid black;
+}
+
+#bottom-window {
+    display: flex;
+}
+
+#stop {
+    display: flex;
+    justify-content: space-around;
+}
+
+.box {
+    background-position: center;
+    background-size: cover;
+}
+
+.machine {
+    background-image: url('https://wallpaperplay.com/walls/full/2/b/6/11392.jpg#.Xbomjps-7os.link');
+    background-position: center;
+    background-size: cover;
+}
