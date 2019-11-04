@@ -9,15 +9,19 @@ h1 {
 }
 
 body {
-    width: 900px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-image: url('https://wallpaperplay.com/walls/full/2/b/6/11392.jpg#.Xbomjps-7os.link');
     background-position: center;
     background-size: cover;
+    display: flex;
+    justify-content: space-around;
 }
 
+
+.slots {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 #the-game {
     width: 500px;
     height: 500px;
@@ -30,7 +34,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 700px;
 }
 
 .decorations {
@@ -40,8 +43,9 @@ body {
 
 
 section {
-    border: 2px solid black;
-    width: 500px
+    /* border: 2px solid black; */
+    width: 500px;
+    padding: 0 1.5rem;
 }
 
 .box {
@@ -77,4 +81,31 @@ button {
     margin-top: 0.5rem;
     width: 4rem;
     height: 2rem;
+}
+
+.shop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid white;
+}
+
+.slots {
+    border: 2px solid white;
+}
+
+table {
+    color: white;
+    width: 500px;
+    font-size: 1.5rem;
+}
+
+caption {
+    font-size: 2rem;
+}
+
+tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

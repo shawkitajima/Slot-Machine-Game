@@ -9,6 +9,7 @@ const WINNING_SLOTS = [
     [6, 4, 2]
 ];
 const player = new Audio();
+const soundPlayer = new Audio();
 
 const IMAGES = [
     {
@@ -45,11 +46,53 @@ IMAGES1.push(IMAGES[4]);
 IMAGES1.push(IMAGES[0]);
 IMAGES1.push(IMAGES[1]);
 
+const SOUNDS = [
+    {
+        sound: 'Pikachu',
+        price: 30,
+        src: "audio/India St 2.mp3"
+    },
+    {
+        sound: 'Sad Pikachu',
+        price: 32,
+        src: "audio/India St 3.mp3"
+    },
+    {
+        sound: 'Pika Pika',
+        price: '40',
+        src: "audio/India St 4.mp3"
+    },
+    {
+        sound: 'Stitch From Lilo And Stich',
+        price: 20,
+        src: "audio/India St 5.mp3"
+    },
+    {
+        sound: 'Shakira',
+        price: 20,
+        src: "audio/India St 2.mp3"
+    },
+    {
+        sound: 'Stop Tom Jones',
+        price: 100
+    }
+]
+
 /*----- app's state (variables) -----*/
 let mySlots, winningslots;
 let stop1, stop2, stop3;
 let slot0pos, slot1pos, slot2pos, slot3pos, slot4pos, slot5pos, slot6pos, slot7pos, slot8pos;
 let coinCount = 23;
+// These are just the slot positions
+let j = 2;
+let z = 1;
+let x = 0;
+let a = 2;
+let b = 1;
+let c = 0;
+let t = 2;
+let u = 1;
+let v = 0;
 
 
 
@@ -68,6 +111,7 @@ let slot6 = document.getElementById('6');
 let slot7 = document.getElementById('7');
 let slot8 = document.getElementById('8');
 let startButton = document.getElementById('start');
+let shopButton = document.querySelector('table');
 
 
 /*----- event listeners -----*/
@@ -75,32 +119,29 @@ let startButton = document.getElementById('start');
 stop1Button.addEventListener('click', function() {
     player.pause();
     playSound();
-    document.querySelector('h1').textContent = 'Only Death Will Save You';
-    document.querySelector('h1').style.color = 'red';
+    generateHell();
     stop1 = true;
 });
 stop2Button.addEventListener('click', function() {
     player.pause();
     playSound();
-    document.querySelector('h1').textContent = 'Only Death Will Save You';
-    document.querySelector('h1').style.color = 'red';
+    generateHell();
     stop2 = true;
 });
 stop3Button.addEventListener('click', function() {
     player.pause();
     playSound();
-    document.querySelector('h1').textContent = 'Only Death Will Save You';
-    document.querySelector('h1').style.color = 'red';
+    generateHell();
     stop3 = true;
 });
-startButton.addEventListener('click', init)
 
-window.addEventListener('beforeunload', function (e) {
-    e.preventDefault();
-    e.returnValue = 'You can\'t leave';
-});
+startButton.addEventListener('click', init);
+
+shopButton.addEventListener('click', buy);
 
 /*----- functions -----*/
+init();
+generateShopItems();
 
 
 function init() {
@@ -116,23 +157,13 @@ function init() {
     render();
 }
 
-let j = 2;
-let z = 1;
-let x = 0;
-let a = 2;
-let b = 1;
-let c = 0;
-let t = 2;
-let u = 1;
-let v = 0;
+
 
 function render() {
     f();
     g();
     h();
 }
-
-
 
 
 function f() {
@@ -211,8 +242,11 @@ function checkWinner() {
         ) {
         coinCount += mySlots[slot[0]] * 3;
         player.pause();
-        document.querySelector('h1').textContent = 'Sweet Salvation';
-        document.querySelector('h1').style.color = 'white';
+        if (document.querySelector('slots >h1').textContent !== 'Money Buys Anything') {
+            document.querySelector('.slots > h1').textContent = 'Sweet Salvation';
+            document.querySelector('.slots > h1').style.color = 'white';
+        }
+        // We need to add the event listener back in case the user is on the last round and wins
         startButton.addEventListener('click', init);
         displayCoins();
         return
@@ -232,10 +266,59 @@ function displayCoins() {
 };
 
 
-init();
-
 function playSound() {
     player.src = "audio/What's New Pussycat.mp3";
     player.type = "audio/ogg";
     player.play();
   }
+
+function playSoundPlayer(src) {
+    soundPlayer.src = src;
+    player.type = 'audio/ogg';
+    player.pause();
+    soundPlayer.play();
+}
+
+function buy(evt) {
+    if (evt.target.tagName === "BUTTON") {
+    let sound = (evt.target.parentElement.nextSibling.nextSibling.textContent);
+    let soundObj = SOUNDS.find(heyy => heyy.sound === sound);
+    if (soundObj.price <= coinCount) {
+        console.log('You can buy this');
+        if (soundObj.sound === 'Stop Tom Jones') {
+            coinCount -= soundObj.price;
+            displayCoins();
+            player.setAttribute('muted', true);
+            document.querySelector('.slots > h1').textContent = 'Money Buys Anything';
+            document.querySelector('.slots > h1').style.color = 'white';
+        }
+        coinCount -= soundObj.price;
+        displayCoins();
+        playSoundPlayer(soundObj.src);
+    }
+    else {
+        console.log('You too broke lol');
+    }
+    }
+}
+
+function generateShopItems() {
+    SOUNDS.forEach(sound => {
+        let template = document.createElement('tr');
+        template.innerHTML = `                
+        <tr>
+            <th scope="row"><button>X</button></th>
+            <td>${sound.sound}</td>
+            <td>${sound.price} coins</td>
+        </tr>`;
+        document.querySelector('tbody').appendChild(template);
+    })
+}
+
+function generateHell() {
+    let message = document.querySelector('.slots > h1');
+    if (message.textContent !== 'Money Buys Anything') {
+        document.querySelector('.slots > h1').textContent = 'Only Death Will Save You';
+        document.querySelector('.slots > h1').style.color = 'red';
+    }
+};

@@ -9,45 +9,61 @@
     <script defer src="js/app.js"></script>
 </head>
 <body>
-    <!-- Let's make an H1 Tag for the game -->
-    <h1>Really Fun Slots!</h1>
-    <!-- Let's make a big box that will contain the entire slot machine. It can be a flex-->
-    <section class="machine">
-        <!-- Let's make 3 column-wise wrappers -->
-        <div class="decorations"></div>
-            <!-- Decorations! -->
+    <wrapper class="slots">
+        <!-- Let's make an H1 Tag for the game -->
+        <h1>Really Fun Slots!</h1>
+        <!-- Let's make a big box that will contain the entire slot machine. It can be a flex-->
+        <section class="machine">
+            <!-- Let's make 3 column-wise wrappers -->
+            <div class="decorations"></div>
+                <!-- Decorations! -->
 
-            <!-- The slots (with the animations.) This is going to be a grid of 9 divs -->
-        <section id="the-game"> 
-            <div class='box' id='0'></div>
-            <div class='box' id='1'></div>
-            <div class='box' id='2'></div>
-            <div class='box' id='3'></div>
-            <div class='box' id='4'></div>
-            <div class='box' id='5'></div>
-            <div class='box' id='6'></div>
-            <div class='box' id='7'></div>
-            <div class='box' id='8'></div>
+                <!-- The slots (with the animations.) This is going to be a grid of 9 divs -->
+            <section id="the-game"> 
+                <div class='box' id='0'></div>
+                <div class='box' id='1'></div>
+                <div class='box' id='2'></div>
+                <div class='box' id='3'></div>
+                <div class='box' id='4'></div>
+                <div class='box' id='5'></div>
+                <div class='box' id='6'></div>
+                <div class='box' id='7'></div>
+                <div class='box' id='8'></div>
+            </section>
+                <!-- Let's continue the decorations -->
+
+                <!--3 buttons that stop each of the slots (column-wise)  -->
+
+                <!-- A window that tracks how many coins you have -->
+
+                <!-- The start button that makes the slots move -->
+            <section class="decorations">
+                <div id="stop" class="buttons">
+                    <button id='stop1'>Stahp</button><button id='stop2'>Stahp</button><button id='stop3'>Stahp</button>
+                </div> 
+                <div id='Bottom-Window'>
+                    <div></div>
+                    <button id='start'>Start!</button>
+                </div>
+            </section>    
         </section>
-            <!-- Let's continue the decorations -->
+    </wrapper>
+    <wrapper class="shop">  
+        <h1>The Shop</h1>
+        <table>
+            <caption>Coins Can Buy Reprieve!</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Buy!</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </wrapper>
 
-            <!--3 buttons that stop each of the slots (column-wise)  -->
-
-            <!-- A window that tracks how many coins you have -->
-
-            <!-- The start button that makes the slots move -->
-        <section class="decorations">
-            <div id="stop" class="buttons">
-                <button id='stop1'>Stahp</button><button id='stop2'>Stahp</button><button id='stop3'>Stahp</button>
-            </div> 
-            <div id='Bottom-Window'>
-                <div></div>
-                <button id='start'>Start!</button>
-            </div>
-        </section>    
-
-
-    </section>
     <!-- A PayPal (or Venmo) button that sends Shaw Kitajima money so that he can
         pay off his GA Tuition -->
 
