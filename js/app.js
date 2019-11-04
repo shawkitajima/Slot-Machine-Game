@@ -49,7 +49,7 @@ IMAGES1.push(IMAGES[1]);
 let mySlots, winningslots;
 let stop1, stop2, stop3;
 let slot0pos, slot1pos, slot2pos, slot3pos, slot4pos, slot5pos, slot6pos, slot7pos, slot8pos;
-let coinCount = 13;
+let coinCount = 23;
 
 
 
@@ -75,19 +75,30 @@ let startButton = document.getElementById('start');
 stop1Button.addEventListener('click', function() {
     player.pause();
     playSound();
+    document.querySelector('h1').textContent = 'Only Death Will Save You';
+    document.querySelector('h1').style.color = 'red';
     stop1 = true;
 });
 stop2Button.addEventListener('click', function() {
     player.pause();
     playSound();
+    document.querySelector('h1').textContent = 'Only Death Will Save You';
+    document.querySelector('h1').style.color = 'red';
     stop2 = true;
 });
 stop3Button.addEventListener('click', function() {
     player.pause();
     playSound();
+    document.querySelector('h1').textContent = 'Only Death Will Save You';
+    document.querySelector('h1').style.color = 'red';
     stop3 = true;
 });
 startButton.addEventListener('click', init)
+
+window.addEventListener('beforeunload', function (e) {
+    e.preventDefault();
+    e.returnValue = 'You can\'t leave';
+});
 
 /*----- functions -----*/
 
@@ -199,6 +210,10 @@ function checkWinner() {
             mySlots[slot[0]] !== null
         ) {
         coinCount += mySlots[slot[0]] * 3;
+        player.pause();
+        document.querySelector('h1').textContent = 'Sweet Salvation';
+        document.querySelector('h1').style.color = 'white';
+        startButton.addEventListener('click', init);
         displayCoins();
         return
         }
