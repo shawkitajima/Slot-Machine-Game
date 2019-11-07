@@ -157,16 +157,13 @@ function init() {
     render();
 }
 
-
-
 function render() {
-    f();
-    g();
-    h();
+    moveSlotOne();
+    moveSlotTwo();
+    moveSlotThree();
 }
 
-
-function f() {
+function moveSlotOne() {
     if (j > 4) j = 0;
     if (z > 4) z = 0;
     if (x > 4) x = 0;
@@ -184,11 +181,11 @@ function f() {
     x++;
     j++;
     if (stop1 === false){
-        setTimeout(f, 150);
+        setTimeout(moveSlotOne, 150);
     }
 }
 
-function g() {
+function moveSlotTwo() {
     if (a > 4) a = 0;
     if (b > 4) b = 0;
     if (c > 4) c = 0;
@@ -206,11 +203,11 @@ function g() {
     b++;
     c++;
     if (stop2 === false){
-        setTimeout(g, 150);
+        setTimeout(moveSlotTwo, 150);
     }
 }
 
-function h() {
+function moveSlotThree() {
     if (t > 4) t = 0;
     if (u > 4) u = 0;
     if (v > 4) v = 0;
@@ -228,7 +225,7 @@ function h() {
     u++;
     v++;
     if (stop3 === false){
-        setTimeout(h, 150);
+        setTimeout(moveSlotThree, 150);
     }
 }
 
@@ -240,16 +237,16 @@ function checkWinner() {
             mySlots[slot[0]] === mySlots[slot[2]] &&
             mySlots[slot[0]] !== null
         ) {
-        coinCount += mySlots[slot[0]] * 3;
-        player.pause();
-        if (document.querySelector('slots >h1').textContent !== 'Money Buys Anything') {
-            document.querySelector('.slots > h1').textContent = 'Sweet Salvation';
-            document.querySelector('.slots > h1').style.color = 'white';
-        }
-        // We need to add the event listener back in case the user is on the last round and wins
-        startButton.addEventListener('click', init);
-        displayCoins();
-        return
+            coinCount += mySlots[slot[0]] * 3;
+            player.pause();
+            if (document.querySelector('.slots > h1').textContent !== 'Money Buys Anything') {
+                document.querySelector('.slots > h1').textContent = 'Sweet Salvation';
+                document.querySelector('.slots > h1').style.color = 'white';
+            }
+            // We need to add the event listener back in case the user is on the last round and wins
+            startButton.addEventListener('click', init);
+            displayCoins();
+            return
         }
     })
 };
@@ -258,7 +255,6 @@ function displayCoins() {
     if (coinCount < PLAY_COST) {
         document.querySelector('#Bottom-Window > div:first-child').textContent = `You have run out of money`;
         startButton.removeEventListener('click', init);
-
     }
     else {
         document.querySelector('#Bottom-Window > div:first-child').textContent = `Your current coins are: ${coinCount}`;
@@ -281,24 +277,22 @@ function playSoundPlayer(src) {
 
 function buy(evt) {
     if (evt.target.tagName === "BUTTON") {
-    let sound = (evt.target.parentElement.nextSibling.nextSibling.textContent);
-    let soundObj = SOUNDS.find(heyy => heyy.sound === sound);
-    if (soundObj.price <= coinCount) {
-        console.log('You can buy this');
-        if (soundObj.sound === 'Stop Tom Jones') {
+        let sound = (evt.target.parentElement.nextSibling.nextSibling.textContent);
+        console.log(sound);
+        console.log(`my above sibling is ${evt.target.parentElement.nextSibling}`);
+        let soundObj = SOUNDS.find(heyy => heyy.sound === sound);
+        if (soundObj.price <= coinCount) {
+            if (soundObj.sound === 'Stop Tom Jones') {
+                coinCount -= soundObj.price;
+                displayCoins();
+                player.setAttribute('muted', true);
+                document.querySelector('.slots > h1').textContent = 'Money Buys Anything';
+                document.querySelector('.slots > h1').style.color = 'white';
+            }
             coinCount -= soundObj.price;
             displayCoins();
-            player.setAttribute('muted', true);
-            document.querySelector('.slots > h1').textContent = 'Money Buys Anything';
-            document.querySelector('.slots > h1').style.color = 'white';
+            playSoundPlayer(soundObj.src);
         }
-        coinCount -= soundObj.price;
-        displayCoins();
-        playSoundPlayer(soundObj.src);
-    }
-    else {
-        console.log('You too broke lol');
-    }
     }
 }
 

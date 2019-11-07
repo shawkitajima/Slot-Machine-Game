@@ -16,11 +16,13 @@ body {
     justify-content: space-around;
 }
 
-
 .slots {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 2px solid white;
+    width: 600px;
+    
 }
 #the-game {
     width: 500px;
@@ -34,22 +36,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 500px;
+    padding: 0 1.5rem;
 }
 
 .decorations {
     margin: 2rem 0;
     color: white;
-}
-
-
-section {
-    /* border: 2px solid black; */
-    width: 500px;
-    padding: 0 1.5rem;
-}
-
-.box {
-    border: 1px solid black;
 }
 
 #Bottom-Window {
@@ -72,6 +65,7 @@ section {
 }
 
 .box {
+    border: 1px solid black;
     background-position: center;
     background-size: cover;
 }
@@ -88,10 +82,7 @@ button {
     flex-direction: column;
     align-items: center;
     border: 2px solid white;
-}
-
-.slots {
-    border: 2px solid white;
+    width: 600px;
 }
 
 table {
@@ -100,12 +91,13 @@ table {
     font-size: 1.5rem;
 }
 
-caption {
-    font-size: 2rem;
-}
-
 tr {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+caption {
+    font-size: 2rem;
+    margin-top: 3rem;
 }
