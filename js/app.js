@@ -50,27 +50,22 @@ const SOUNDS = [
     {
         sound: 'Pikachu',
         price: 30,
-        src: "audio/India St 2.mp3"
-    },
-    {
-        sound: 'Sad Pikachu',
-        price: 32,
-        src: "audio/India St 3.mp3"
+        src: "audio/Pikachu.m4a"
     },
     {
         sound: 'Pika Pika',
         price: '40',
-        src: "audio/India St 4.mp3"
+        src: "audio/Pika Pika.m4a"
     },
     {
         sound: 'Stitch From Lilo And Stich',
         price: 20,
-        src: "audio/India St 5.mp3"
+        src: "audio/Stitch.m4a"
     },
     {
         sound: 'Shakira',
         price: 20,
-        src: "audio/India St 2.mp3"
+        src: "audio/Shakira.m4a"
     },
     {
         sound: 'Stop Tom Jones',
@@ -278,8 +273,6 @@ function playSoundPlayer(src) {
 function buy(evt) {
     if (evt.target.tagName === "BUTTON") {
         let sound = (evt.target.parentElement.nextSibling.nextSibling.textContent);
-        console.log(sound);
-        console.log(`my above sibling is ${evt.target.parentElement.nextSibling}`);
         let soundObj = SOUNDS.find(heyy => heyy.sound === sound);
         if (soundObj.price <= coinCount) {
             if (soundObj.sound === 'Stop Tom Jones') {

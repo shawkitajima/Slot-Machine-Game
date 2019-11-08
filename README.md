@@ -4,7 +4,9 @@ Welcome to the README for the Slot Machine game!
 
 ## Screenshots
 
-IMAGES ON IMAGES
+<img src="Screen Shot 2019-11-07 at 4.35.08 PM.png"
+     alt="screenshot"
+     style="float: left; margin-right: 10px; margin-bottom: 2rem" />
 
 ## Technologies Used
 - HTML
