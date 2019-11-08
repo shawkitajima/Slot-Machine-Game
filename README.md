@@ -15,7 +15,6 @@ https://shawkitajima.github.io/Slot-Machine-Game/
 - HTML
 - CSS
 - Javascript
-- Mocha/Chai for Testing
 
 ## Getting Started
 
