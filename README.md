@@ -18,7 +18,7 @@ https://shawkitajima.github.io/Slot-Machine-Game/
 
 ## Getting Started
 
-This game will be fully functional once the index.html file is launched in the browser. However, the starting number of coins is currently set at 20 (it's actually 23, but we're using 3 coins to start the first play). If you want to update the number of coins, you can edit coinCount at line 85 on app.js, or you just update it with the developer tools in Chrome.
+This game will be fully functional once the index.html file is launched in the browser. However, the starting number of coins is currently set at 20 (it's actually 23, but we're using 3 coins to start the first play). If you want to update the number of coins, you can edit coinCount at line 80 on app.js, or you just update it with the developer tools in Chrome.
 
 If you are not a fan of "What's New Pussycat" by Tom Jones, I would strongly recommend playing the game with audio muted on your computer. However, please keep in mind that the items you buy in the shop are sounds from our dear friend Carolina.
 
