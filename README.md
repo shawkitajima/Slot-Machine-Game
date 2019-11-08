@@ -2,6 +2,9 @@
 
 Welcome to the README for the Slot Machine game! 
 
+Link to Web Deployment:
+https://shawkitajima.github.io/Slot-Machine-Game/
+
 ## Screenshots
 
 <img src="Screen Shot 2019-11-07 at 4.35.08 PM.png"
